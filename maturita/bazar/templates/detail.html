@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail auta{% endblock %}
+
+{% block content %}
+    <hr>
+    <h2 class="text-center">{{ auto.nazev }}</h2>
+    <hr>
+    <div class="row">
+        <div class="col text-center">
+            <p><img src="{{ auto.foto.url }}" alt="{{ auto.nazev }}" width="75%"></p>
+        </div>
+        <div class="col">
+            <p><b>Cena:</b> {{ auto.cena }} kč</p>
+            <hr>
+            <p><b>Hodnocení:</b> {% for star in "x"|ljust:auto.stav %} * {% endfor %}</p>
+            <hr>
+            <p><b>Druh:</b> {{ auto.druh.oblast }} - {{ auto.druh.oznaceni_druhu }}</p>
+            <hr>
+            <p><b>Počet najetých kilometrů:</b> {{ auto.ojete }}</p>
+            <hr>
+            <p><b>Počet koňských sil:</b> {{ auto.sila }}</p>
+            <hr>
+            <p><b>Průměrná spotřeba:</b> {{ auto.spotreba }}l/100km</p>
+            <hr>
+            <p>{{ auto.popis }}</p>
+        </div>
+    </div>
+{% endblock %}

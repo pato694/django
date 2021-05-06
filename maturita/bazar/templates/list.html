@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Přehled aut{% endblock %}
+
+{% block content %}
+    <hr>
+    {% for auto in auto_list %}
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <p><img src="{{ auto.foto.url }}" alt="{{ auto.nazev }}" width="50%"></p>
+            </div>
+            <div class="col-sm-8">
+                <h3><a href="{% url 'detail' auto.pk %}">{{ auto.nazev }}</a></h3>
+                <hr>
+                <p><b>Hodnocení:</b> {% for star in "x"|ljust:auto.stav %} * {% endfor %}</p>
+                <hr>
+                <p><b>Druh:</b> {{ auto.druh.oblast }} - {{ auto.druh.oznaceni_druhu }}</p>
+                <hr>
+                <p><b>Cena:</b> {{ auto.cena }} Kč</p>
+        </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
